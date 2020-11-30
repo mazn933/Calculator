@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 2</title>
+
+    <style>
+                
+        body{margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff5f5;
+            }
+
+        .container{width:500px;
+                   height:300px;
+                   margin: 0 auto;
+
+                 }
+
+      
+
+        .numbers{width:200px;
+                 }
+
+        .result{width:298px;
+                height: 25px;
+                border: 1px solid #2cb978;
+                font-size: 1.5rem;
+                background-color: white;
+                }
+
+
+        h4{cursor: pointer;
+          font-weight: 800;
+          font-size:1rem;
+          margin-top: 1rem;
+          margin-bottom: 0rem;
+          padding:1em 1.5em;
+
+          }
+
+        .num{ border:1px solid white;
+            }
+
+        .num:hover{background-color:#f5eded;
+                border:1px solid black;}
+
+        .zero:hover{background-color:#f5eded;
+                border:1px solid black;}
+
+        .N{background-color: #e2ded3;
+           }
+
+
+        .display{width:288px;
+                height:50px;
+                 border: 2px solid #1e6262;
+                 margin-top:1em;
+                 padding-left: .5em;
+                 text-align: left;
+                 background-color: white;
+                }
+
+         .nmm{width: 300px;
+              height:70px;
+              display: flex;
+             justify-content: space-around
+          }
+
+         .nmmm{
+             width:300px;
+             height:70px;
+             display: flex;
+             justify-content: space-around;
+              }
+
+        .nmn{width:300px;
+              height:70px;
+             display: flex;
+             justify-content: space-around;
+             padding-bottom: 1em;}
+
+          
+
+           
+
+
+        .op{font-size: 1.2rem;
+                margin-top: 0em;
+                border-left:2px solid #857671;
+                color: white;}
+
+        .plus{border-left: 0px;}
+
+        .operation{background-color:#f07b3f;
+                       height: 50px;
+                       display: flex;
+                    justify-content: space-around;
+        }
+        .operation h4{padding:.5em 1em;}
+
+        .equal{cursor: pointer;
+                    color: black; 
+                    background-color: #2cb978;
+                    padding: 1em 1.4em;
+                    font-size:1rem;
+                    margin-right: 0em;
+                    color: white;
+
+                     }
+
+            
+        .x{width:300px;
+             background-color: #e2ded3;
+             display: flex;
+             justify-content:space-between;
+             height:50px;
+            align-items: center;
+            padding:0 0 .5em 0;}
+
+
+        .pd{margin-bottom:1em;}
+
+        .delete{background-color: #d72323;
+            padding: .86em 1.4em;
+            color: white;
+             }
+
+        .zero{font-size: 1rem;
+                  margin-left: 1.2em;
+                  border: 1px solid white;}
+
+         .board{width:300px;
+         box-shadow: -1px 1px 1px .6px #40514e,1px 1px 1px .5px #40514e;
+         }
+         h1{text-align: left;
+           color: #236969;
+           font-weight: 800;}
+
+    </style>
+</head>
+<body>
+
+    
+
+    <div class="container">
+        <h1>Calculator</h1>
+
+         <div class="board">
+            <div class="display">
+          
+            </div>
+    
+            <div class="result">
+                <p></p>
+    
+            </div>
+            <div class="operation">
+                <h4 class="op plus">+</h4>
+                <h4 class="op">-</h4>
+                <h4 class="op ">×</h4>
+                <h4 class="op">/</h4>
+    
+            </div>
+    
+            <div class="numbers">
+               <div class="nmm N">
+                 <h4 class="num">1</h4>
+                 <h4 class="num">2</h4>
+                 <h4 class="num">3</h4>
+    
+               </div>
+                
+              <div class="nmmm N">
+                   <h4 class="num">4</h4>
+                   <h4 class="num">5</h4>
+                   <h4 class="num">6</h4>
+    
+              </div>
+    
+            <div class="nmn N">
+                  <h4 class="num">7</h4>
+                  <h4 class="num">8</h4>
+                  <h4 class="num">9</h4>
+            </div>
+               
+            </div>
+    
+            <div class="x">
+                <h4 class="zero pd">0</h4>
+                <h4 class="pd">.</h4>
+                <h4 class="delete pd">C</h4>
+                <h5 class="equal">=</h5>
+            </div>
+         </div>
+        
+    </div>
+
+    
+
+    </div>
+    <script>
+
+   const number=document.querySelectorAll('h4');
+   const a1=document.querySelector('.display');
+   const eql=document.querySelector('.equal');
+   const del=document.querySelector('.delete');
+   const rsl=document.querySelector('.result')
+
+   var ar=[];
+
+  
+
+     for(let i=0;i<number.length;i++){
+        number[i].addEventListener('click',function(){
+        a1.textContent+=number[i].textContent;
+        var num=number[i].innerText;
+        
+        ar.push(num);
+    })
+}
+
+
+eql.addEventListener('click',function(){
+
+//addition//
+
+  if(ar.includes('+')){
+
+    var fin=ar.join("");
+
+    fin=fin.split('+');
+
+    fin=fin.map(function(el){
+        return Number(el)
+    })
+
+     
+function addition(a, b){
+  return a + b};
+  
+  var finaladd=fin.reduce(addition);
+
+
+  rsl.innerText=finaladd;
+  ar.splice(0,ar.length)
+  a1.textContent='';
+
+  }
+
+ //Subtraction//
+
+else if(ar.includes("-")){
+
+   var fin=ar.join("");
+
+    fin=fin.split('-');
+
+    fin=fin.map(function(el){
+        return Number(el)
+    })
+ function subtr(a, b){
+
+    return a - b};
+  
+    var finaladd=fin.reduce(subtr);
+
+    rsl.innerText=finaladd;
+    ar.splice(0,ar.length)
+    a1.textContent='';  }
+
+  //multiplication//
+  
+ else if(ar.includes('×')){
+    var fin=ar.join("");
+
+    fin=fin.split('×');
+
+    fin=fin.map(function(el){
+        return Number(el)
+    })
+
+    function multiply(a, b){
+
+        return a * b};
+      
+        var finaladd=fin.reduce(multiply);
+
+        rsl.innerText=finaladd;
+       ar.splice(0,ar.length)
+        a1.textContent='';
+ }
+
+ //division//
+
+ else if(ar.includes('/')){
+
+    var fin=ar.join("");
+
+    fin=fin.split('/');
+
+    fin=fin.map(function(el){
+        return Number(el)
+    })
+
+    function division(a,b){
+        return a/b
+    };
+
+    var finaladd=fin.reduce(division);
+
+
+     rsl.innerText=finaladd;
+     ar.splice(0,ar.length)
+     a1.textContent='';
+
+ }
+})
+
+del.addEventListener('click',function(){
+    a1.innerHTML="";
+    ar=[];
+})
+
+   
+  
+
+    </script>
+
+</body>
+</html>
